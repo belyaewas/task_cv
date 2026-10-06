@@ -6,6 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.signal import find_peaks
+from scipy.stats import gaussian_kde
 
 df = pd.read_csv('X_Train.csv')
 df_Y = pd.read_csv('Y_Train.csv')
@@ -18,14 +20,6 @@ otv.append([round(mean, 4), round(std, 4)])
 #otv.append([mean,std])
 otv1 = pd.DataFrame(otv, columns=['median', 'std'])
 otv1.to_csv('otvety.csv', index=False)
-
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from scipy.signal import find_peaks
-from scipy.stats import gaussian_kde
 
 
 #Загрузка данных
@@ -96,7 +90,6 @@ for clust in sorted(df2['cluster'].unique()):
           f"ср.кв.откл.={cluster_data.std():.4f}, мин={cluster_data.min():.4f}, макс={cluster_data.max():.4f}")
 
 otv2 = pd.DataFrame(otv, columns=['median', 'std'])
-otv2
 otv2.to_csv('otvety.csv', index=False)
 import numpy as np
 import pandas as pd
